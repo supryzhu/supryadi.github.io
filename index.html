@@ -3,132 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Your portfolio showcasing projects, skills, and contact information">
-    <meta name="author" content="Your Name">
-    <title>Supryadi</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Your Name - Personal Resume</title>
     <style>
+        /* Common Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 3em;
-        }
-
-        section {
-            padding: 40px 20px;
-        }
-
-        .intro, .projects, .skills, .contact {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        h2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             color: #333;
+            background-color: #f8f9fa;
         }
-
-        .projects .project {
-            background-color: white;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-
-        .skills ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .skills li {
+        
+        /* Header and Navigation */
+        header {
             background-color: #fff;
-            margin: 5px 0;
-            padding: 8px;
-            border-radius: 5px;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: fixed;
-            bottom: 0;
             width: 100%;
+            top: 0;
+            z-index: 1000;
         }
-
-        a {
-            color: #5a67d8;
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #495057;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+        }
+        
+        /* Main Content */
+        main {
+            padding-top: 100px;
+            padding-bottom: 50px;
+            min-height: calc(100vh - 180px);
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #212529;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #343a40;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #495057;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Profile Section */
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 5px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+            font-weight: bold;
+        }
+        
+        .profile h1 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .contact-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-list li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .contact-list strong {
+            margin-right: 10px;
+            color: #495057;
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .social-links li {
+            margin-right: 15px;
+        }
+        
+        .social-links a {
+            color: #007bff;
             text-decoration: none;
         }
-
-        a:hover {
+        
+        .social-links a:hover {
             text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                font-size: 0.9rem;
+            }
+            
+            .nav-links li {
+                margin-left: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="name">Your Name</div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">About</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="cv.html">Curriculum Vitae</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<header>
-    <h1>Supryadi</h1>
-    <p>PhD student of Computer Science | NLP Newbie Researcher</p>
-</header>
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Profile Section -->
+        <section class="profile">
+            <div class="profile-img">Profile Photo</div>
+            <h1>Your Full Name</h1>
+            <p class="tagline">Your Title or Professional Tagline</p>
+            <p>Brief professional summary (2-3 sentences about who you are professionally)</p>
+        </section>
 
-<section class="intro">
-    <h2>About Me</h2>
-    <p>Hi! I’m Supryadi, a PhD student at Tianjin University (China) majoring Computer Science. My research field is about NLP.</p>
-</section>
+        <!-- About Me Section -->
+        <section>
+            <h2>About Me</h2>
+            <p>Welcome to my personal website. I am a [your profession] with [X years] of experience in [your field]. My work focuses on [brief description of your work focus].</p>
+            <p>I am passionate about [what you're passionate about professionally]. Throughout my career, I have [brief highlight of career achievements].</p>
+            <p>Currently, I am [current role/project/research]. I am always open to [collaborations/opportunities/etc.].</p>
+        </section>
 
-<section class="projects">
-    <h2>Projects</h2>
-    <div class="project">
-        <h3>Project 1: Web Application</h3>
-        <p>A description of your project. Highlight the key technologies used and what you achieved with this project. <a href="#">Link to project</a></p>
-    </div>
-    <div class="project">
-        <h3>Project 2: E-commerce Website</h3>
-        <p>A description of your project. Highlight the key technologies used and what you achieved with this project. <a href="#">Link to project</a></p>
-    </div>
-</section>
-<!--  
-<section class="skills">
-    <h2>Skills</h2>
-    <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>React.js</li>
-        <li>Node.js</li>
-        <li>PHP, MySQL</li>
-        <li>Responsive Web Design</li>
-        <li>Version Control (Git)</li>
-        <li>UI/UX Design</li>
-    </ul>
-</section>
--->
-<section class="contact">
-    <h2>Contact Me</h2>
-    <p>If you'd like to work together or just want to say hello, feel free to reach out!</p>
-    <p>Email: <a href="mailto:supryadi@tju.edu.cn">supryadi@tju.edu.cn</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/supryadi-zhu/" target="_blank">linkedin.com/in/supryadi-zhu/</a></p>
-    <p>GitHub: <a href="https://github.com/supryzhu" target="_blank">github.com/supryzhu</a></p>
-</section>
-<!--
-<footer>
-    <p>&copy; 2025 Supryadi. All Rights Reserved.</p>
-</footer>
---->
+        <!-- Skills Section -->
+        <section>
+            <h2>Areas of Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3>Technical Skills</h3>
+                    <p>List your key technical skills here. For example: programming languages, software, technical methodologies, etc.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Research Interests</h3>
+                    <p>Highlight your main research areas or academic interests. This is particularly important for academics or researchers.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Professional Skills</h3>
+                    <p>Describe your professional or soft skills here. For example: project management, team leadership, communication, etc.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Information -->
+        <section>
+            <h2>Contact Information</h2>
+            <div class="contact-info">
+                <ul class="contact-list">
+                    <li><strong>Email:</strong> your.email@example.com</li>
+                    <li><strong>Location:</strong> City, Country</li>
+                    <li><strong>University/Company:</strong> Your Affiliation</li>
+                </ul>
+                <h3>Connect With Me</h3>
+                <ul class="social-links">
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Google Scholar</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

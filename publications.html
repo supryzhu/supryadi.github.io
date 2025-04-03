@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Your Name</title>
+    <style>
+        /* Common Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header and Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #495057;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+        }
+        
+        /* Main Content */
+        main {
+            padding-top: 100px;
+            padding-bottom: 50px;
+            min-height: calc(100vh - 180px);
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #212529;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #343a40;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #495057;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Publications Section */
+        .publication-filters {
+            display: flex;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background-color: #e9ecef;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .publication {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .publication-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #212529;
+        }
+        
+        .publication-authors {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: #495057;
+        }
+        
+        .publication-journal {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #343a40;
+        }
+        
+        .publication-year {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .publication-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .publication-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .publication-link {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: #f8f9fa;
+            color: #007bff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s;
+        }
+        
+        .publication-link:hover {
+            background-color: #e9ecef;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                font-size: 0.9rem;
+            }
+            
+            .nav-links li {
+                margin-left: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="name">Your Name</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="publications.html" class="active">Publications</a></li>
+                    <li><a href="cv.html">Curriculum Vitae</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h1>Publications</h1>
+        
+        <section>
+            <div class="publication-filters">
+                <button class="filter-btn active">All Publications</button>
+                <button class="filter-btn">Journal Articles</button>
+                <button class="filter-btn">Conference Papers</button>
+                <button class="filter-btn">Book Chapters</button>
+            </div>
+            
+            <!-- Journal Publication Example -->
+            <div class="publication">
+                <h3 class="publication-title">Title of Your Publication Goes Here: With a Longer Subtitle for Context</h3>
+                <p class="publication-authors">Your Name, Co-author Name, Another Co-author</p>
+                <p class="publication-journal">Journal of Example Studies</p>
+                <p class="publication-year">2024</p>
+                <div class="publication-abstract">
+                    <p>Abstract: This is a brief summary of your publication. It should be concise but provide enough information for readers to understand the main focus and findings of your work. Typically, this would be 3-5 sentences highlighting the problem addressed, methodology, and key results.</p>
+                </div>
+                <div class="publication-links">
+                    <a href="#" class="publication-link">PDF</a>
+                    <a href="#" class="publication-link">DOI</a>
+                    <a href="#" class="publication-link">BibTeX</a>
+                </div>
+            </div>
+            
+            <!-- Conference Publication Example -->
+            <div class="publication">
+                <h3 class="publication-title">Another Example Publication Title: Conference Edition</h3>
+                <p class="publication-authors">Your Name, Different Co-author</p>
+                <p class="publication-journal">Proceedings of the International Conference on Example Research</p>
+                <p class="publication-year">2023</p>
+                <div class="publication-abstract">
+                    <p>Abstract: This is another example abstract for a conference paper. It should describe the problem, approach, and findings briefly. You might mention the significance of this work and how it contributes to the field.</p>
+                </div>
+                <div class="publication-links">
+                    <a href="#" class="publication-link">PDF</a>
+                    <a href="#" class="publication-link">Slides</a>
+                    <a href="#" class="publication-link">Code</a>
+                </div>
+            </div>
+            
+            <!-- Book Chapter Example -->
+            <div class="publication">
+                <h3 class="publication-title">Chapter Title: From Book on Research Topic</h3>
+                <p class="publication-authors">Your Name, Book Editor Name</p>
+                <p class="publication-journal">Book Title: A Comprehensive Guide, Publisher Name</p>
+                <p class="publication-year">2022</p>
+                <div class="publication-abstract">
+                    <p>Abstract: This abstract describes your contribution to an edited volume or book. Here you would explain the scope of your chapter and how it fits into the broader context of the book.</p>
+                </div>
+                <div class="publication-links">
+                    <a href="#" class="publication-link">Publisher Link</a>
+                    <a href="#" class="publication-link">Citation</a>
+                </div>
+            </div>
+            
+            <!-- Add more publications as needed -->
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
