@@ -107,7 +107,7 @@
             margin-bottom: 1rem;
         }
         
-        /* Profile Section */
+        /* Profile Section - MODIFIED */
         .profile {
             display: flex;
             flex-direction: column;
@@ -119,8 +119,8 @@
         .profile-img {
             width: 200px;
             height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
+            border-radius: 0; /* Changed from 50% to 0 to make it square */
+            object-fit: contain; /* Changed from cover to contain to prevent cropping */
             margin-bottom: 1.5rem;
             border: 5px solid #fff;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -221,6 +221,7 @@
             .profile-img {
                 width: 150px;
                 height: 150px;
+                /* No change to border-radius needed here as it's already 0 in the main style */
             }
         }
     </style>
@@ -230,7 +231,7 @@
     <header>
         <div class="container">
             <nav>
-                <div class="name">Your Name</div>
+                <div class="name">Supryadi</div>
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">About</a></li>
                     <li><a href="publications.html">Publications</a></li>
@@ -245,7 +246,7 @@
         <!-- Profile Section -->
         <section class="profile">
             <div class="profile-img">Profile Photo</div>
-            <h1>Your Full Name</h1>
+            <h1>Supryadi</h1>
             <p class="tagline">Your Title or Professional Tagline</p>
             <p>Brief professional summary (2-3 sentences about who you are professionally)</p>
         </section>
