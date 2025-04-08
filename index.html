@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Resume</title>
+    <title>Supryadi - Personal Resume</title>
     <style>
         /* Common Styles */
         * {
@@ -12,11 +12,16 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth; /* Enable smooth scrolling */
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f8f9fa;
+            padding-top: 80px; /* Added padding to account for fixed header height */
         }
         
         .container {
@@ -34,6 +39,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            height: 70px; /* Set explicit height for header */
         }
         
         nav {
@@ -41,6 +47,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
+            height: 100%;
         }
         
         .name {
@@ -74,13 +81,15 @@
         
         /* Main Content */
         main {
-            padding-top: 100px;
+            padding-top: 30px; /* Reduced from 100px since we added padding to body */
             padding-bottom: 50px;
             min-height: calc(100vh - 180px);
         }
         
         section {
             margin-bottom: 3rem;
+            padding-top: 70px; /* Add padding to offset fixed header when scrolling to section */
+            margin-top: -70px; /* Counteract the padding for normal flow */
         }
         
         h1 {
@@ -110,18 +119,31 @@
         /* Profile Section - MODIFIED */
         .profile {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            text-align: center;
             margin-bottom: 2rem;
+            gap: 2rem;
+            padding-top: 90px; /* Increased padding at the top for better visibility */
+            margin-top: -70px; /* Adjust to maintain layout */
+        }
+        
+        .profile-text {
+            flex: 1;
+            text-align: left;
+            order: 1;
+        }
+        
+        .profile-img-container {
+            flex: 0 0 auto;
+            order: 2;
         }
         
         .profile-img {
             width: 200px;
             height: 200px;
-            border-radius: 0; /* Changed from 50% to 0 to make it square */
-            object-fit: contain; /* Changed from cover to contain to prevent cropping */
-            margin-bottom: 1.5rem;
+            border-radius: 0;
+            /*object-fit: contain;*/
+            object-fit: cover;
             border: 5px solid #fff;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             background-color: #e9ecef;
@@ -131,11 +153,7 @@
             color: #adb5bd;
             font-weight: bold;
         }
-        
-        .profile h1 {
-            margin-bottom: 0.5rem;
-        }
-        
+
         .tagline {
             font-size: 1.2rem;
             color: #6c757d;
@@ -146,14 +164,43 @@
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 1rem;
         }
         
         .skill-card {
             background-color: white;
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Publications Section */
+        .publication-list {
+            list-style: none;
+        }
+        
+        .publication-item {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* CV Section */
+        .cv-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .cv-item {
+            margin-bottom: 2rem;
+        }
+        
+        .cv-item:last-child {
+            margin-bottom: 0;
         }
         
         /* Contact Section */
@@ -206,6 +253,10 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding-top: 70px; /* Ensure consistent header padding on mobile */
+            }
+            
             .nav-links {
                 font-size: 0.9rem;
             }
@@ -218,10 +269,21 @@
                 font-size: 2rem;
             }
             
+            /* Stack profile section vertically on mobile */
+            .profile {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 90px;
+            }
+            
+            .profile-text {
+                text-align: center;
+            }
+            
             .profile-img {
                 width: 150px;
                 height: 150px;
-                /* No change to border-radius needed here as it's already 0 in the main style */
+                margin-bottom: 1.5rem;
             }
         }
     </style>
@@ -233,9 +295,9 @@
             <nav>
                 <div class="name">Supryadi</div>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">About</a></li>
-                    <li><a href="publications.html">Publications</a></li>
-                    <li><a href="cv.html">Curriculum Vitae</a></li>
+                    <li><a href="#about" class="active">About</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#cv">CV</a></li>
                 </ul>
             </nav>
         </div>
@@ -244,65 +306,167 @@
     <!-- Main Content -->
     <main class="container">
         <!-- Profile Section -->
-        <section class="profile">
-            <div class="profile-img">Profile Photo</div>
-            <h1>Supryadi</h1>
-            <p class="tagline">Your Title or Professional Tagline</p>
-            <p>Brief professional summary (2-3 sentences about who you are professionally)</p>
+        <section id="about" class="profile">
+            <div class="profile-text">
+                <h2>Supryadi</h2>
+                <p class="tagline">PhD Student</p>
+                <p class="tagline">College of Intelligence and Computing, Tianjin University, China</p>
+                [<a href="https://www.linkedin.com/in/supryadi-zhu/">LinkedIn</a>] [<a href="https://github.com/supryzhu">GitHub</a>] [<a href="https://x.com/supryzhu">Twitter</a>] [<a href="https://scholar.google.com/citations?user=sZxaFG0AAAAJ&hl">Google Scholar</a>]
+            </div>
+            <div class="profile-img-container">
+                <img src="fig\pic.jpg" alt="Your Profile Picture" class="profile-img">
+            </div>
         </section>
 
         <!-- About Me Section -->
         <section>
             <h2>About Me</h2>
-            <p>Welcome to my personal website. I am a [your profession] with [X years] of experience in [your field]. My work focuses on [brief description of your work focus].</p>
-            <p>I am passionate about [what you're passionate about professionally]. Throughout my career, I have [brief highlight of career achievements].</p>
-            <p>Currently, I am [current role/project/research]. I am always open to [collaborations/opportunities/etc.].</p>
+            <p>Hi! My name is Supryadi, a 3rd year PhD student at Tianjin University, China. I'm a member of the <a href="https://tjunlp-lab.github.io/">TJUNLP</a> Lab at Tianjin University, where our research focus on Natural Language Processing (NLP) and Large Language Models (LLMs). I'm advised by <a href="https://dyxiong.github.io/">Prof. Deyi Xiong</a>.</p>
+            <p>My research centers on multilingual LLMs, low-resource LLMs, and LLMs evaluation.</p>
         </section>
 
         <!-- Skills Section -->
+         <!--
         <section>
             <h2>Areas of Expertise</h2>
             <div class="skills-container">
                 <div class="skill-card">
                     <h3>Technical Skills</h3>
-                    <p>List your key technical skills here. For example: programming languages, software, technical methodologies, etc.</p>
+                    <p>Python</p>
                 </div>
                 <div class="skill-card">
                     <h3>Research Interests</h3>
-                    <p>Highlight your main research areas or academic interests. This is particularly important for academics or researchers.</p>
+                    <p>Multilingual LLMs</p>
+                    <p>LLMs for low-resource languages</p>
+                    <p>Translation</p>
+                    
                 </div>
                 <div class="skill-card">
                     <h3>Professional Skills</h3>
-                    <p>Describe your professional or soft skills here. For example: project management, team leadership, communication, etc.</p>
+                    <p>Project Management</p>
                 </div>
+            </div>
+        </section>
+        -->
+
+        <!-- Publications Section -->
+        <section id="publications">
+            <h2>Publications</h2>
+            <ul class="publication-list">
+                <li class="publication-item">
+                    <h3>Multilingual Large Language Models: A Systematic Survey</h3>
+                    Shaolin Zhu, <u>Supryadi</u>, Shaoyang Xu, Haoran Sun, Leiyu Pan, Menglong Cui,Jiangcun Du, Renren Jin, António Branco, Deyi Xiong
+                    <p><i>arXiv 2024</i></p>
+                    [<a href="https://arxiv.org/abs/2411.11072v2">Paper</a>] [<a href="https://github.com/tjunlp-lab/Awesome-Multilingual-LLMs-Papers">Github</a>]
+                </li>
+                <li class="publication-item">
+                    <h3>FuxiTranyu: A Multilingual Large Language Model Trained with Balanced Data</h3>
+                    Haoran Sun, Renren Jin, Shaoyang Xu, Leiyu Pan, <u>Supryadi</u>, Menglong Cui, Jiangcun Du, Yikun Lei, Lei Yang, Ling Shi, Juesi Xiao, Shaolin Zhu, Deyi Xiong
+                    <p><i>Empirical Methods in Natural Language Processing (EMNLP) Industry Track 2024</i></p>
+                    [<a href="#">Paper</a>] [<a href="https://github.com/tjunlp-lab/FuxiTranyu">Github</a>] [<a href="https://huggingface.co/collections/TJUNLP/fuxitranyu-67dc409b9c78b9e7df8ab7ff">Hugging Face</a>]
+                </li>
+                <li class="publication-item">
+                    <h3>An Empirical Study on the Robustness of Massively Multilingual Neural Machine Translation</h3>
+                    <u>Supryadi</u>, Leiyu Pan, Deyi Xiong
+                    <p><i>Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING) 2024</i></p>
+                    [<a href="https://aclanthology.org/2024.lrec-main.97/">Paper</a>] [<a href="https://github.com/tjunlp-lab/ID-ZH-MTRobustEval">Github</a>]
+                </li>
+                <li class="publication-item">
+                    <h3>Evaluating Large Language Models: A Comprehensive Survey</h3>
+                    Zishan Guo, Renren Jin, Chuang Liu, Yufei Huang, Dan Shi, <u>Supryadi</u>, Linhao Yu, Yan Liu, Jiaxuan Li, Bojian Xiong, Deyi Xiong
+                    <p><i>arXiv 2023</i></p>
+                    [<a href="https://arxiv.org/abs/2310.19736">Paper</a>] [<a href="https://github.com/tjunlp-lab/Awesome-LLMs-Evaluation-Papers">Github</a>]
+                </li>
+                <li class="publication-item">
+                    <h3>Is Robustness Transferable across Languages in Multilingual Neural Machine Translation?</h3>
+                    Leiyu Pan, <u>Supryadi</u>, Deyi Xiong
+                    <p><i>Empirical Methods in Natural Language Processing (EMNLP) Findings 2023</i></p>
+                    [<a href="https://aclanthology.org/2023.findings-emnlp.940/">Paper</a>]
+                </li>
+            </ul>
+        </section>
+
+        <!-- CV Section -->
+        <section id="cv">
+            <h2>Curriculum Vitae</h2>
+            <div class="cv-section">
+                <div class="cv-item">
+                    <h3>Education</h3>
+                    <p><strong>PhD in Computer Science</strong> - Tianjin University, 2022-Present</p>
+                    <p><strong>Master's Degree</strong> - Bina Nusantara University, 2019-2021</p>
+                    <p><strong>Bachelor's Degree</strong> - Bina Nusantara University, 2016-2020</p>
+                </div>
+                <!--
+                <div class="cv-item">
+                    <h3>Research Experience</h3>
+                    <p><strong>Research Assistant</strong> - Laboratory/Department, University, Year-Present</p>
+                    <p>Brief description of your research responsibilities and achievements.</p>
+                </div>
+                <div class="cv-item">
+                    <h3>Teaching Experience</h3>
+                    <p><strong>Teaching Assistant</strong> - Course Name, University, Semester/Year</p>
+                </div>
+                <div class="cv-item">
+                    <h3>Awards and Honors</h3>
+                    <p>List of academic awards, scholarships, grants, etc.</p>
+                </div>
+                  -->
             </div>
         </section>
 
         <!-- Contact Information -->
-        <section>
+         <!--
+        <section id="contact">
             <h2>Contact Information</h2>
             <div class="contact-info">
                 <ul class="contact-list">
-                    <li><strong>Email:</strong> your.email@example.com</li>
-                    <li><strong>Location:</strong> City, Country</li>
-                    <li><strong>University/Company:</strong> Your Affiliation</li>
+                    <li><strong>Email:</strong> supryadi@tju.edu.cn</li>
+                    <li><strong>Location:</strong> Tianjin, China</li>
+                    <li><strong>University:</strong> Tianjin University</li>
                 </ul>
                 <h3>Connect With Me</h3>
                 <ul class="social-links">
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">GitHub</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Google Scholar</a></li>
+                    <li><a href="https://www.linkedin.com/in/supryadi-zhu/">LinkedIn</a></li>
+                    <li><a href="https://github.com/supryzhu">GitHub</a></li>
+                    <li><a href="https://x.com/supryzhu">Twitter</a></li>
+                    <li><a href="https://scholar.google.com/citations?user=sZxaFG0AAAAJ&hl">Google Scholar</a></li>
                 </ul>
             </div>
         </section>
+        -->
     </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <p>&copy; 2025 Supryadi. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- JavaScript for active link state -->
+    <script>
+        // Update active link based on current scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            let scrollPosition = window.pageYOffset;
+            
+            // Add some offset to account for the fixed header
+            scrollPosition += 100;
+            
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                const id = section.getAttribute('id');
+                const navLink = document.querySelector('.nav-links a[href="#' + id + '"]');
+                
+                if (scrollPosition >= top && scrollPosition < top + height && navLink) {
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    navLink.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
